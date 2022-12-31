@@ -3,6 +3,7 @@
 
 
 import cv2
+import numpy as np
 
 # Create an object to read
 # from camera
@@ -23,22 +24,33 @@ size = (frame_width, frame_height)
 # Below VideoWriter object will create
 # a frame of above defined The output
 # is stored in 'filename.avi' file.
-result = cv2.VideoWriter('filename.avi',
+result = cv2.VideoWriter('regular.avi',
                          cv2.VideoWriter_fourcc(*'MJPG'),
-                         10, size)
+                         15, size)
+resultMask = cv2.VideoWriter('masked.avi',
+                         cv2.VideoWriter_fourcc(*'MJPG'),
+                         15, size)
 
 while (True):
     ret, frame = video.read()
+    upper = [15, 98, 97]
+    lower = np.array([160, 40, 40], np.uint8)
+    upper = np.array([179, 255, 255], np.uint8)
 
+
+    HSVframe = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(HSVframe, lower, upper)
     if ret == True:
 
         # Write the frame into the
         # file 'filename.avi'
         result.write(frame)
+        #resultMask.write(np.repeat(mask,3))
+        resultMask.write(np.dstack([mask]*3))
 
         # Display the frame
         # saved in the file
-        cv2.imshow('Frame', frame)
+        cv2.imshow('Frame', mask)
 
         # Press S on keyboard
         # to stop the process
