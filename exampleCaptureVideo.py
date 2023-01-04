@@ -7,8 +7,8 @@ import numpy as np
 
 # Create an object to read
 # from camera
-video = cv2.VideoCapture(0)
-
+#video = cv2.VideoCapture(0)       # LIVE CAMERA
+video = cv2.VideoCapture("/Users/yhonatangayer/Library/CloudStorage/OneDrive-post.bgu.ac.il/BGU/regular2.avi")
 # We need to check if camera
 # is opened previously or not
 if (video.isOpened() == False):
