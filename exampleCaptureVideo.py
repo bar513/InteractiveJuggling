@@ -4,7 +4,7 @@
 
 import cv2
 import numpy as np
-
+# uhguhu
 # Create an object to read
 # from camera
 #video = cv2.VideoCapture(0)       # LIVE CAMERA
