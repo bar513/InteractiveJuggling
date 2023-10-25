@@ -14,7 +14,7 @@ from JGame import *
 from PatternManager import *
 import math
 
-online = True
+online = False
 colors = [(255,0,0),[0,255,0],(0,0,255),[255,255,255]]
 backSub = cv.createBackgroundSubtractorKNN(history = 20, dist2Threshold = 100) #1000
 backSub2 = cv.createBackgroundSubtractorMOG2(history = 100, varThreshold = 100)#y
