@@ -5,6 +5,20 @@
 import cv2
 import numpy as np
 import math
+
+def draw_label(img, text, pos, bg_color):
+   font_face = cv2.FONT_HERSHEY_SIMPLEX
+   scale = 2
+   color = (0, 0, 0)
+   thickness = cv2.FILLED
+   margin = 2
+   txt_size = cv2.getTextSize(text, font_face, scale, thickness)
+
+   end_x = pos[0] + txt_size[0][0] + margin
+   end_y = pos[1] - txt_size[0][1] - margin
+
+   cv2.rectangle(img, pos, (end_x, end_y), bg_color, thickness)
+   cv2.putText(img, text, pos, font_face, scale, color, 1, cv2.LINE_AA)
 def overlayTrail(x1,y1,x2,y2,frame,frameT,frame_width,frame_height,frameT_width,frameT_height,trailLength=900,scaleFactor=1):
     # trail size is the actually trial length in pixels, not its image width or height
     #scaleFactor make the trail bigger or smaller. its size also depend on the distance between the points
@@ -68,6 +82,8 @@ size = (frame_width, frame_height)
 t=0
 x1=0
 y1=0
+
+
 while (True):
     ret, frame = video.read()
     retT, frameT = videoTrail.read()
@@ -110,6 +126,7 @@ while (True):
 
 
         frame = overlayTrail(x1,y1,x2,y2,frame,frameT,frame_width,frame_height,frameT_width,frameT_height,900,30)
+        draw_label(frame, 'Hello World', (20, 20), (255, 0, 0))
         cv2.imshow('Frame', frame)
 
 
