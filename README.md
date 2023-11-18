@@ -1,7 +1,6 @@
 # Interactive Juggling Game
 An open source project using openCV and Unity3D that let users to get live feedback on their juggling skills while they trying to achieve the best score. Pattern recognition and mini game was also implemented.
-All details on project site:
-
+All details on project site: https://www.hackster.io/interactive-juggling/interactive-juggling-game-with-pattern-recognition-008cc4
 # Code usage
 Two different executable apps exist -  python app and unity3D app.
 
